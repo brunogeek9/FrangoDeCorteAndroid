@@ -4,6 +4,7 @@ import android.content.Context;
 import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
                         //mostrando um toast com o resultado
                         String text = String.valueOf("CR "+fz.getSaidas()[0] + "\nCA "+fz.getSaidas()[1] +
                                 "\nGP " + fz.getSaidas()[2]);
-                        Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-                        toast.show();
-
+                        //Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+                        //toast.show();
+                        Log.i("fuzzy",text);
 
                     }
                 }).start();
