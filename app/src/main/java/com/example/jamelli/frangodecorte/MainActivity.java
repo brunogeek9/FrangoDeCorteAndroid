@@ -17,11 +17,12 @@ public class MainActivity extends AppCompatActivity {
     EditText et_idade;
     EditText et_temperatura;
     EditText et_umidade;
+    double idade = 0,temperatura = 0,umidade = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         bnt_salvar = (Button) findViewById(R.id.button);
 
         et_idade = (EditText) findViewById(R.id.editText);
@@ -30,14 +31,19 @@ public class MainActivity extends AppCompatActivity {
         bnt_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double idade = Double.parseDouble(et_idade.getText().toString());
-                double temperatura = Double.parseDouble(et_temperatura.getText().toString());
-                double umidade = Double.parseDouble(et_umidade.getText().toString());
-                FrangoDeCorte f = new FrangoDeCorte(idade,temperatura,umidade);
-                FuzzyFrangoDeCorte fz = new FuzzyFrangoDeCorte();
-                fz.setEntradas(f);
-                fz.graficosConjuntos();
-                fz.graficosSaidas();
+                idade = Double.parseDouble(et_idade.getText().toString());
+                temperatura = Double.parseDouble(et_temperatura.getText().toString());
+                umidade = Double.parseDouble(et_umidade.getText().toString());
+
+                new Thread(new Runnable() {
+                    public void run() {
+                        FrangoDeCorte f = new FrangoDeCorte(idade,temperatura,umidade);
+                        FuzzyFrangoDeCorte fz = new FuzzyFrangoDeCorte();
+                        fz.setEntradas(f);
+                        fz.graficosConjuntos();
+                        fz.graficosSaidas();
+                    }
+                }).start();
             }
         });
     }
