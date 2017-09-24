@@ -28,4 +28,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile files('libs/jFuzzyLogic.jar')
+    compile files('libs/jfuzzylite-6.0.1.jar')
 }

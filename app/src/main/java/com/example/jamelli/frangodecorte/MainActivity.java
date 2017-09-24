@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jamelli.frangodecorte.fuzzy.FrangoDeCorte;
+import com.example.jamelli.frangodecorte.fuzzy.FrangoFuzzyLite;
 import com.example.jamelli.frangodecorte.fuzzy.FuzzyFrangoDeCorte;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,15 +41,16 @@ public class MainActivity extends AppCompatActivity {
         umidade = Double.parseDouble(et_umidade.getText().toString());
 
         FrangoDeCorte f = new FrangoDeCorte(idade,temperatura,umidade);
-        FuzzyFrangoDeCorte fz = new FuzzyFrangoDeCorte(this);
+        //FuzzyFrangoDeCorte fz = new FuzzyFrangoDeCorte(this);
+        //fz.setEntradas(f);
 
-        fz.setEntradas(f);
+        FrangoFuzzyLite ffl = new FrangoFuzzyLite();
+        ffl.setEntradas(f);
 
         //mostrando um toast com o resultado
-        String text = String.valueOf("CR "+fz.getSaidas()[0] + "\nCA "+fz.getSaidas()[1] +
+        /*String text = String.valueOf("CR "+fz.getSaidas()[0] + "\nCA "+fz.getSaidas()[1] +
                 "\nGP " + fz.getSaidas()[2]);
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-        toast.show();
-        //Log.i("fuzzy",text);
+        toast.show();*/
     }
 }
